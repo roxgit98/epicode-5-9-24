@@ -1,8 +1,6 @@
 package davidegiliberti.epicode_5_9_24.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -18,10 +16,15 @@ public class Topping {
     private String nome;
     private int calorie;
     private double prezzo;
+    @ManyToOne
+    @JoinColumn(name = "pizza_id")
+    private Pizza pizza;
 
-    public Topping(String nome, int calorie, double prezzo) {
+    public Topping(long id, String nome, int calorie, double prezzo) {
+        this.id = id;
         this.nome = nome;
         this.calorie = calorie;
         this.prezzo = prezzo;
+
     }
 }
